@@ -3,26 +3,46 @@
  * @author Ruben Bramasco
  * @version 1.0.1 
  */
-public class Card implements Comparable{
+public class Card{
     
     /**
      * Suit of card
      */
-    private String suit;
+    private int suit;
 
     /**
      * Card number
      */
     private int cardNum;
+    
+    /**
+     * Char for card printing
+     */
+    private char rank;
 
     /**
      * Constucts card with number and suit
      * @param carNum card number as Int
      * @param suit card suit as String Object
      */
-    public Card(int carNum, String suit){
+    public Card(int carNum, int suit){
         this.cardNum = carNum;
         this.suit = suit;
+        convertToCardChar();
+    }
+
+    private void convertToCardChar(){
+        if(cardNum > 10){
+            switch (cardNum){
+                case 11: rank = 'J'; break;
+                case 12: rank = 'Q'; break;
+                case 13: rank = 'K'; break;
+                case 14: rank = 'A'; break;
+            }
+        }
+        else{
+            rank = (char)(cardNum + 46);
+        }
     }
 
     /**
@@ -46,7 +66,7 @@ public class Card implements Comparable{
      * Gets card suit
      * @return card suit as String Object
      */
-    public String getSuit(){
+    public int getSuit(){
         return suit;
     }
 
@@ -62,7 +82,43 @@ public class Card implements Comparable{
      * Prints card's suit and numnber
      */
     public void printCard(){
-        System.out.print("C:"+ suit + cardNum );
+        System.out.println(" __________");
+        switch(suit){
+            case 0: 
+            System.out.println("|"+rank+"   /\\    |");
+            System.out.println("|   /  \\   |");
+            System.out.println("|  /    \\  |");
+            System.out.println("|  \\    /  |");
+            System.out.println("|   \\  /   |");
+            System.out.println("|    \\/    |");
+            break;
+            case 1:
+            System.out.println("|"+rank+"         |");
+            System.out.println("     / \\   |");
+            System.out.println("|   /   \\  |");
+            System.out.println("|  /_   _\\ |");
+            System.out.println("|    | |   |");
+            System.out.println("|    |_|   |");
+            break;
+            case 2:
+            System.out.println("|"+rank+"   ___   |");
+            System.out.println("|   (   )  |");
+            System.out.println("|  (_   _) |");
+            System.out.println("|    | |   |");
+            System.out.println("|    | |   |");
+            System.out.println("|    |_|   |");
+            break;
+            case 3:
+            System.out.println("|"+rank+"  _  _   |");
+            System.out.println("|  / \\/ \\  |");
+            System.out.println("| |      | |");
+            System.out.println("|  \\    /  |");
+            System.out.println("|   \\  /   |");
+            System.out.println("|    \\/    |");
+            break;
+
+        }
+        System.out.println("|__________|");
     }
 
 }

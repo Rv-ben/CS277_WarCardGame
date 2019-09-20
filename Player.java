@@ -1,4 +1,4 @@
-import java.util.List;
+
 
 /**
  * Represents a player for card game
@@ -36,8 +36,8 @@ public class Player{
         return cards.pop();
     }
 
-    public void addCards(List<Card> cards){
-        deckSize += cards.size();
+    public void addCards(Deck cards){
+        deckSize += cards.getDeckSize();
         this.cards.addListOfCards(cards);
     }
 

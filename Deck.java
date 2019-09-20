@@ -8,7 +8,7 @@ enum Suit{
 /**
  * Represents a Deck
  * @author Ruben Bramasco
- * @version 1.0.1
+ * @version 1.0.2
  */
 public class Deck{
 
@@ -26,14 +26,15 @@ public class Deck{
 
     private Suit suits[] = Suit.values();
 
-    
-    public Deck(List<Card> cards){
+    /**
+     * Contructs empty deck
+     */
+    public Deck(){
         this.cards = new ArrayList<Card>();
-        this.addListOfCards(cards);
-        this.deckSize = cards.size();
-        this.shuffle();
+        this.deckSize = 0;
     }
 
+    
     public Deck(int deckSize){
         this.deckSize = deckSize;
         this.fillDeck();
@@ -59,8 +60,12 @@ public class Deck{
      * @param endIndex index of last element in list as Int 
      * @return List of Card Objects 
      */
-    public List<Card> splitDeck(int beginIndex, int endIndex){
-        return cards.subList(beginIndex, endIndex);
+    public Deck splitDeck(int beginIndex, int endIndex){
+        Deck temp = new Deck();
+        for(int i = beginIndex; i < endIndex; i++){
+            temp.addToBottom(cards.get(i));
+        }
+        return temp;
     }
 
     /**
@@ -104,7 +109,7 @@ public class Deck{
         
         for( Suit Su: suits ){
             for(int i = 0; i < cardPerSuit; i++){
-                this.cards.add(i, new Card(i+2, Su.name()));
+                this.cards.add(i, new Card(i+2, Su.ordinal()));
             }
         }
     
@@ -113,11 +118,19 @@ public class Deck{
     /**
      * Adds a list of cards to the bottom of deck
      */
-    public void addListOfCards(List<Card> cards){
-        for(Card i : cards){
+    public void addListOfCards(Deck newCards){
+        for(Card i : newCards.cards){
             this.cards.add(i);
         }
         deckSize += cards.size();
+    }
+
+    /**
+     * Clears the list of cards
+     */
+    public void clear(){
+        cards.clear();
+        deckSize = 0;
     }
 
     /**
