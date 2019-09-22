@@ -6,7 +6,7 @@ public class TestBed{
     public static Deck MainDeck, playerOneDeck, playerTwoDeck, playedCards;
     public static Card playerOneCard, playerTwoCard;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
 
         //Cards currently in play
         playedCards = new Deck();
@@ -24,14 +24,21 @@ public class TestBed{
 
         //Keeps running the game while the players are not out of cards
 
+        System.out.println("__      ____ _ _ __ ");
+        System.out.println("\\ \\ /\\ / / _` | \'__|");
+        System.out.println(" \\ V  V / (_| | |   ");
+        System.out.println("  \\_/\\_/ \\__,_|_|   ");
+
         int i = 1;
 
         while(!gameOver()){
+                Thread.sleep(3000);
             System.out.println("---------------------------------ROUND: "+i+"--------------------------------------------------------------");
             round();
             //debug
-            System.out.println(playerOne.getDeckSize() +" "+playerTwo.getDeckSize());
+            System.out.println("User: "+playerOne.getDeckSize() +" Computer: "+playerTwo.getDeckSize());
             i++;
+            
             System.out.println("---------------------------------ROUND END----------------------------------------------------------------");
         }
 
@@ -57,12 +64,12 @@ public class TestBed{
             playerTwoCard = playerTwo.placeCard();
 
             //Display placed cards
-            System.out.println("Player 1's Card");
+            System.out.println("User's Card");
             playerOneCard.printCard();
 
             System.out.println();
             
-            System.out.println("Player 2's Card");
+            System.out.println("Computer's Card");
             playerTwoCard.printCard();
             
 
@@ -83,6 +90,7 @@ public class TestBed{
         if(result == 1){
             //player one wins
             playerOne.addCards(playedCards);
+            System.out.println("User wins this round");
             return false;
         }
         else if(result == 0){
@@ -92,6 +100,7 @@ public class TestBed{
         }
         else{
             //tie
+            System.out.println("WAAARRR");
             war();
             return true;
         }
@@ -130,18 +139,20 @@ public class TestBed{
             //add second placed card sum to first
             cardSum = playerOneCard.getCardNum();
             playerOneCard = playerOne.placeCard();
-            System.out.println("Player 1's Card");
+            System.out.println("User's Second Card");
             playerOneCard.printCard();
             playedCards.addToBottom(playerOneCard);
             cardSum += playerOneCard.getCardNum();
         }
 
         if(cardSum < playerTwoCard.getCardNum()){
+            System.out.println("Computer wins this round");
             playerTwo.addCards(playedCards);
         }
         else{
+            System.out.println("User wins this round");
             playerOne.addCards(playedCards);
         }
-        
+        //input.close();
     }
 }

@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TestBed",
+            "request": "launch",
+            "mainClass": "TestBed",
+            "projectName": "CS277_WarCardGame_496b317d"
+        }
+    ]
+}

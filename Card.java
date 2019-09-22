@@ -18,7 +18,7 @@ public class Card{
     /**
      * Char for card printing
      */
-    private char rank;
+    private String rank;
 
     /**
      * Constucts card with number and suit
@@ -28,20 +28,22 @@ public class Card{
     public Card(int carNum, int suit){
         this.cardNum = carNum;
         this.suit = suit;
+        this.rank = "";
         convertToCardChar();
     }
 
     private void convertToCardChar(){
-        if(cardNum > 10){
+        if(cardNum > 9){
             switch (cardNum){
-                case 11: rank = 'J'; break;
-                case 12: rank = 'Q'; break;
-                case 13: rank = 'K'; break;
-                case 14: rank = 'A'; break;
+                case 10: rank = "10"; break;
+                case 11: rank = "J"; break;
+                case 12: rank = "Q"; break;
+                case 13: rank = "K"; break;
+                case 14: rank = "A"; break;
             }
         }
         else{
-            rank = (char)(cardNum + 46);
+            rank += (char)(cardNum + 48);
         }
     }
 
@@ -94,7 +96,7 @@ public class Card{
             break;
             case 1:
             System.out.println("|"+rank+"         |");
-            System.out.println("     / \\   |");
+            System.out.println("|    / \\   |");
             System.out.println("|   /   \\  |");
             System.out.println("|  /_   _\\ |");
             System.out.println("|    | |   |");
