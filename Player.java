@@ -16,7 +16,7 @@ public class Player{
     /**
      * Size of deck of cards
      */
-    private int deckSize;
+    private int score;
 
     /**
      * Contructs a new player with a deck
@@ -24,7 +24,7 @@ public class Player{
      */
     public Player(Deck cards){
         this.cards = cards;
-        this.deckSize = cards.getDeckSize();
+        this.score = cards.getDeckSize();
     }
 
     /**
@@ -32,33 +32,41 @@ public class Player{
      * @return Card Object
      */
     public Card placeCard(){
-        this.deckSize--;
+        this.score--;
         return cards.pop();
     }
-
+    
+    /**
+     * Adds cards to bottom of player deck
+     * @param cards Deck Object
+     */
     public void addCards(Deck cards){
-        deckSize += cards.getDeckSize();
+        score += cards.getDeckSize();
         this.cards.addListOfCards(cards);
     }
 
     /**
-     * Gets cards
-     * @return Deck Object
+     * Gets the players main deck
+     * @return player deck as Deck Object
      */
     public Deck getDeck(){
         return cards;
     }
 
     /**
-     * Gets deck size
-     * @return deckSize as Int
+     * Gets players score
+     * @return score as Int
      */
-    public int getDeckSize(){
-        return deckSize;
+    public int getScore(){
+        return score;
     }
 
+    /**
+     * Checks if player is out of cards
+     * @return true if player is out of cards
+     */
     public boolean outOfCards(){
-        if(deckSize == 0)
+        if(score == 0)
             return true;
         return false;
     }

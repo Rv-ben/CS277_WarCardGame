@@ -1,4 +1,6 @@
-
+enum Suit{
+    Diamonds,Clubs,Spades,Hearts
+}
 
 public class TestBed{
 
@@ -8,11 +10,13 @@ public class TestBed{
 
     public static void main(String[] args) throws InterruptedException{
 
+        Suit suits[] = Suit.values();
+
         //Cards currently in play
         playedCards = new Deck();
 
         //Makes a deck with 52 and 4 suits
-        MainDeck = new Deck(52);
+        MainDeck = new Deck(52,suits);
 
         //splits the main deck and gives it to player 1
         playerOneDeck = new Deck(MainDeck.splitDeck(0, 52/2));
@@ -36,7 +40,7 @@ public class TestBed{
             System.out.println("---------------------------------ROUND: "+i+"--------------------------------------------------------------");
             round();
             //debug
-            System.out.println("User: "+playerOne.getDeckSize() +" Computer: "+playerTwo.getDeckSize());
+            System.out.println("User: "+playerOne.getScore() +" Computer: "+playerTwo.getScore());
             i++;
             
             System.out.println("---------------------------------ROUND END----------------------------------------------------------------");

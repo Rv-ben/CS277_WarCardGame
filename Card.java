@@ -32,6 +32,9 @@ public class Card{
         convertToCardChar();
     }
 
+    /**
+     * Converts card number to printable rank
+     */
     private void convertToCardChar(){
         if(cardNum > 9){
             switch (cardNum){
@@ -51,7 +54,7 @@ public class Card{
      * Allows comparing between two Card Objects
      * @param Object as Card Object
      */
-    public int compareTo(Object other){
+    public int compareTo(Card other){
         Card otherCard = (Card) other;
 
         if(this.cardNum < otherCard.getCardNum())
@@ -66,7 +69,7 @@ public class Card{
 
     /**
      * Gets card suit
-     * @return card suit as String Object
+     * @return card suit as Int
      */
     public int getSuit(){
         return suit;

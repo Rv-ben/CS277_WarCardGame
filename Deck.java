@@ -1,10 +1,5 @@
 import java.util.*;
 
-
-enum Suit{
-    Diamonds,Clubs,Spades,Hearts
-}
-
 /**
  * Represents a Deck
  * @author Ruben Bramasco
@@ -23,8 +18,10 @@ public class Deck{
      */
     private int deckSize;
 
-
-    private Suit suits[] = Suit.values();
+    /**
+     * Suit enum 
+     */
+    private Suit suits[];
 
     /**
      * Contructs empty deck
@@ -34,18 +31,26 @@ public class Deck{
         this.deckSize = 0;
     }
 
-    
-    public Deck(int deckSize){
+    /**
+     * Constructs a new deck and fills it
+     * @param deckSize as Int
+     * @param suits as Suit enum
+     */
+    public Deck(int deckSize,Suit suits[]){
+        this.suits = suits;
         this.deckSize = deckSize;
         this.fillDeck();
         this.shuffle();
     }
 
+    /**
+     * Constructs a deck from another deck
+     * @param other
+     */
     public Deck(Deck other){
         this.cards = other.getCards();
         this.deckSize = other.getDeckSize();
     }
-
 
     /**
      * Shuffles List of cards
@@ -76,6 +81,10 @@ public class Deck{
         return deckSize;
     }
 
+    /**
+     * gets cards in deck
+     * @return list of cards as ArrayList<Card>
+     */
     public ArrayList<Card> getCards(){
         return cards;
     }
