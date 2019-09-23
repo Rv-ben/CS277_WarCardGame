@@ -3,6 +3,7 @@ import java.util.*;
 /**
  * Represents a Deck
  * @author Ruben Bramasco
+ * @since 2019-22-9
  * @version 1.0.2
  */
 public class Deck{

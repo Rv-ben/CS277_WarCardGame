@@ -4,6 +4,7 @@
  * Represents a player for card game
  * 
  * @author Ruben Bramasco
+ * @since 2019-22-9
  * @version 1.0.0
  */
 public class Player{

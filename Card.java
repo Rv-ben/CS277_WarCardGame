@@ -1,6 +1,7 @@
 /**
  * Implements a card class
  * @author Ruben Bramasco
+ * @since 2019-22-9
  * @version 1.0.1 
  */
 public class Card{
